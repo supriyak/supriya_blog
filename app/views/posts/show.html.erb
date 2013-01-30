@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<table cellpadding="4" cellspacing="4">
+	<tr>
+		<td>Title:</td>
+		<td><%= @post.title%></td>
+	</tr>
+	<tr>
+		<td valign="top">Message:</td>
+		<td><%= @post.message%></td>
+	</tr>
+</table>	
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

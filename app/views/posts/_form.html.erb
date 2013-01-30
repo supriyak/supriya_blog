@@ -1,0 +1,33 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>	
+  <% end %>
+  <table>
+	<tr>
+		<td>Title:</td>
+		<td><%= f.text_field :title%></td>
+	</tr>
+	<tr>
+		<td valign="top">Message:</td>
+		<td><%= f.text_area :message,:rows=>"5", :cols=>"30"%></td>
+	</tr>
+  </table>
+<div id="comments">
+  <%= f.fields_for :comments do |builder| %>
+    <%= render "comment_fields", :f => builder %>
+  <% end %>
+</div>  
+<p><%= link_to_add_fields "Add comment", f, :comments %></p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
